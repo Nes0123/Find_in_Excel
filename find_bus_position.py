@@ -10,6 +10,8 @@ import pandas as pd
 from openpyxl import load_workbook
 from openpyxl.styles import Alignment
 
+# 엑셀 파일별 형식이 너무 다양해서 일단 중단
+
 current_dir = os.getcwd()
 
 root = Tk()
@@ -17,10 +19,18 @@ root.title("엑셀 데이터 검색 프로그램")
 root.resizable(False,False)
 
 def add_file():
-    pass
+    # 나중에 버스 엑셀이 xlsx인지 xls인지 보고 바꿀 것
+    files = filedialog.askopenfilenames(title='엑셀 파일을 선택해주세요',
+    filetypes=(("엑셀 파일 97-2003","*.xls"),("엑셀 파일","*.xlsx"),
+    ("모든 파일","*.*")), initialdir="C:/")
+
+    for file in files:
+        list_file.insert(END,file)
 
 def del_file():
-    pass
+    for index in reversed(list_file.curselection()):
+        list_file.delete(index)
+
 
 def find_txt():
     pass
